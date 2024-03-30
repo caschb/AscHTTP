@@ -65,7 +65,7 @@ Socket Socket::accept() {
 int Socket::get_socket_descriptor() { return socket_descriptor; }
 
 std::vector<char> Socket::recv(Socket &source) {
-  std::vector<char> data(1024);
+  std::vector<char> data(8192);
   auto read_bytes =
       ::recv(source.get_socket_descriptor(), &data[0], data.size(), 0);
   return data;

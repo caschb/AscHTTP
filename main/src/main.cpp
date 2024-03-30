@@ -1,21 +1,13 @@
+#include <http.h>
 #include <iostream>
 #include <socket.h>
 
 int main() {
   std::cout << "Hello world!\n";
-  auto socket = Socket();
-  socket.bind();
-  socket.listen();
+  auto server = HttpServer(8090);
 
   while (true) {
-    auto client = socket.accept();
-    auto data = socket.recv(client);
-    auto req = std::string(data.begin(), data.end());
-    std::cout << req << '\n';
-    auto response = std::string("HTTP/1.0 200 OK\n\nHello world!");
-    auto send_data = std::vector(response.begin(), response.end());
-
-    socket.send(client, send_data);
+    server.handle_connections();
   }
 
   return 0;
