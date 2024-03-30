@@ -1,3 +1,3 @@
 # AscHTTP
 
-Toy HTTP server to play around with the protocol and with socks.
+Toy HTTP server to play around with the protocol and with sockets.
